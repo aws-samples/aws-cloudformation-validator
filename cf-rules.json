@@ -1,0 +1,19 @@
+{
+  "allow_root_keys" : ["AWSTemplateFormatVersion", "Description", "Parameters", "Conditions", "Resources", "Outputs"],
+  "allow_parameters" : [],
+  "allow_resources" : [
+    "CloudFormation::*",
+    "CloudWatch::Alarm",
+    "EC2::Instance",
+    "EC2::Volume",
+    "EC2::VolumeAttachment",
+    "ElasticLoadBalancing::LoadBalancer"
+  ],
+  "require_ref_attributes" :
+    {
+      "EC2::Instance" : [ "InstanceType", "ImageId", "SecurityGroupIds", "SubnetId", "KeyName", "IamInstanceProfile" ],
+      "ElasticLoadBalancing::LoadBalancer" : ["SecurityGroups", "Subnets"]
+    },
+  "allow_additional_attributes" : {},
+  "not_allow_attributes" : {}
+}
